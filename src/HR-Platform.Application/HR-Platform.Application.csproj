@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Compile Remove="Collaborators\ExistsById\**" />
+    <Compile Remove="Collaborators\GetAll\**" />
+    <Compile Remove="Companies\Delete\**" />
+    <Compile Remove="Roles\Delete\**" />
+    <Compile Remove="Roles\ExistsById\**" />
+    <Compile Remove="Roles\GetById\**" />
+    <Compile Remove="Roles\Update\**" />
+    <EmbeddedResource Remove="Collaborators\ExistsById\**" />
+    <EmbeddedResource Remove="Collaborators\GetAll\**" />
+    <EmbeddedResource Remove="Companies\Delete\**" />
+    <EmbeddedResource Remove="Roles\Delete\**" />
+    <EmbeddedResource Remove="Roles\ExistsById\**" />
+    <EmbeddedResource Remove="Roles\GetById\**" />
+    <EmbeddedResource Remove="Roles\Update\**" />
+    <None Remove="Collaborators\ExistsById\**" />
+    <None Remove="Collaborators\GetAll\**" />
+    <None Remove="Companies\Delete\**" />
+    <None Remove="Roles\Delete\**" />
+    <None Remove="Roles\ExistsById\**" />
+    <None Remove="Roles\GetById\**" />
+    <None Remove="Roles\Update\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+    <PackageReference Include="AWSSDK.SecretsManager" Version="3.7.303.2" />
+    <PackageReference Include="ErrorOr" Version="2.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="MailKit" Version="4.6.0" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageReference Include="MimeKit" Version="4.7.1" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.4" />
+    <PackageReference Include="xunit" Version="2.8.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HR-Platform.Domain\HR-Platform.Domain.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>HR-Platform.Application</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Collaborators\AddNewLoginCode\" />
+    <Folder Include="Common\Behaviors" />
+    <Folder Include="Companies\Common\" />
+    <Folder Include="Companies\Create\" />
+    <Folder Include="Companies\ExistsById\" />
+    <Folder Include="Companies\GetAll\" />
+    <Folder Include="Companies\GetById\" />
+    <Folder Include="Assignations\Common" />
+    <Folder Include="Roles\Common" />
+    <Folder Include="Roles\Create" />
+  </ItemGroup>
+
+</Project>

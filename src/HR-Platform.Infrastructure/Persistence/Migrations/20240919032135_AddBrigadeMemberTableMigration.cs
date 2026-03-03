@@ -1,0 +1,63 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace HRPlatform.Infrastructure.Persistence.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddBrigadeMemberTableMigration : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "BrigadeMembers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    CollaboratorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    BrigadeAdjustmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    IsMainLeader = table.Column<bool>(type: "boolean", nullable: false),
+                    IsBrigadeLeader = table.Column<bool>(type: "boolean", nullable: false),
+                    IsEditable = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleteable = table.Column<bool>(type: "boolean", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    EditionDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BrigadeMembers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BrigadeMembers_BrigadeAdjustments_BrigadeAdjustmentId",
+                        column: x => x.BrigadeAdjustmentId,
+                        principalTable: "BrigadeAdjustments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BrigadeMembers_Collaborators_CollaboratorId",
+                        column: x => x.CollaboratorId,
+                        principalTable: "Collaborators",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BrigadeMembers_BrigadeAdjustmentId",
+                table: "BrigadeMembers",
+                column: "BrigadeAdjustmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BrigadeMembers_CollaboratorId",
+                table: "BrigadeMembers",
+                column: "CollaboratorId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "BrigadeMembers");
+        }
+    }
+}
